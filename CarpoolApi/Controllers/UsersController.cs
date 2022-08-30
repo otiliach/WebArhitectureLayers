@@ -12,7 +12,7 @@ namespace CarpoolApi.Controllers
     {
         private readonly IUserService _userService;
 
-        public UsersController(IUserService userService,ILogger<UsersController> logger)
+        public UsersController(IUserService userService)
         {
             _userService = userService;
         }

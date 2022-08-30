@@ -11,10 +11,13 @@ namespace CarpoolApi.Controllers
     public class UsersController : ControllerBase
     {
         private readonly IUserService _userService;
+        private readonly ILogger<UsersController> _logger;
 
-        public UsersController(IUserService userService)
+
+        public UsersController(IUserService userService,ILogger<UsersController> logger)
         {
             _userService = userService;
+            _logger = logger;
         }
 
         [HttpGet]
@@ -31,7 +34,7 @@ namespace CarpoolApi.Controllers
             var user=_userService.GetById(userId);
             if (user == null)
             {
-               
+                _logger.LogWarning("Cannot find the user with id {userId}", userId);
                 return NotFound();
             }
             return Ok(user);

@@ -1,23 +1,38 @@
 ﻿using Core.Contracts;
 using Core.Repositories;
 using Core.Models;
-using DataAccess.DataBase.Models;
+using DataAccess.Database.Models;
+using Microsoft.AspNetCore.Identity;
+
 namespace Business.Services
 {
     public class UserService : IUserService
     {
-        private readonly IRepository<User> _userRipository;
+        private readonly IRepository<ApplicationUser> _userRipository;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public UserService(IRepository<User> userRipository)
+
+        public UserService(IRepository<ApplicationUser> userRipository, UserManager<ApplicationUser> userManager )
         {
             _userRipository = userRipository;
+            _userManager = userManager;
         }
 
-        public async Task<UserForList> CreateUser(string userName )//,string password
+        public async Task<UserForList> CreateUser(string userName, string password)//,string password
         {
-            var user = new User() {Name = userName};
-            var addedUser = await _userRipository.Add(user);
-            return new UserForList(addedUser);
+            var user = new ApplicationUser() {Name = userName};
+
+            var result=await _userManager.CreateAsync(user, password);
+
+            //var addedUser = await _userRipository.Add(user);
+
+            if (!result.Succeeded)
+            {
+                throw new InvalidOperationException(
+                    $"User cannot be created because {result.Errors.First().Description}");
+            }
+
+            return new UserForList(user);
         }
 
         public async Task DeleteUser(int userId)

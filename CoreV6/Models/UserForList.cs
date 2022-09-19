@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DataAccess.DataBase.Models;
+using DataAccess.Database.Models;
 
 namespace Core.Models
 {
@@ -14,7 +14,7 @@ namespace Core.Models
         {
         }
 
-        public UserForList(User user)
+        public UserForList(ApplicationUser user)
         {
             Id = user.Id;
             Name = user.Name;

@@ -11,7 +11,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{3D3C4444-F
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UserInterface", "UserInterface", "{E42C02ED-5B80-42AF-BF69-CB38F20BF037}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarpoolWebApi", "CarpoolApi\CarpoolWebApi.csproj", "{E9AFA06E-3603-4F7D-83B8-5698887567FD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi", "CarpoolApi\WebApi.csproj", "{E9AFA06E-3603-4F7D-83B8-5698887567FD}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Business.User", "Business.UserV6\Business.User.csproj", "{29BBB1A9-AFE4-4082-A4F4-9DFBDD4C95E9}"
 EndProject
@@ -19,7 +19,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "CoreV6\Core.csproj"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccess.Database", "DataAccess.UserV6\DataAccess.Database.csproj", "{DD23ECDB-1473-40BB-AA8B-8043817514D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAcces.User", "DataAcces.User\DataAcces.User.csproj", "{24B679A7-9290-47B3-8481-CE978D19665A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccess.User", "DataAcces.User\DataAccess.User.csproj", "{24B679A7-9290-47B3-8481-CE978D19665A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

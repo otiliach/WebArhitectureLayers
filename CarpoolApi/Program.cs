@@ -4,7 +4,8 @@ using Core.Repositories;
 using DataAccess.UserRepository;
 using DataAccess.Context;
 using Microsoft.EntityFrameworkCore;
-using DataAccess.DataBase.Models;
+using DataAccess.Database.Models;
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,7 +20,11 @@ builder.Services.AddDbContext<CarpoolContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("Carpool")));
 
 builder.Services.AddTransient<IUserService, UserService>();
-builder.Services.AddTransient<IRepository<User>, UserRepository>();
+builder.Services.AddTransient<IRepository<ApplicationUser>, UserRepository>();
+
+builder.Services.AddIdentity<ApplicationUser,IdentityRole<int>>()
+ .AddEntityFrameworkStores<CarpoolContext>()
+ .AddDefaultTokenProviders();
 
 var app = builder.Build();
 

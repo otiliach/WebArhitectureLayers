@@ -2,7 +2,7 @@
 using Core.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
-using DataAccess.DataBase.Models;
+using DataAccess.Database.Models;
 
 namespace CarpoolApi.Controllers
 {
@@ -43,11 +43,11 @@ namespace CarpoolApi.Controllers
         [HttpPost]
         [Consumes("application/json")]
         public async Task<ActionResult<UserForList>> CreateUser(
-            [Required][FromForm] string userName
-           // [Required][FromForm] string password
+            [Required][FromForm] string userName,
+            [Required][FromForm] string password
             )
         {
-            var createdUser = await _userService.CreateUser(userName);
+            var createdUser = await _userService.CreateUser(userName,password);
             return Ok(createdUser);
         }
 

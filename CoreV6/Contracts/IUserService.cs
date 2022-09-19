@@ -1,5 +1,4 @@
-﻿
-using Core.Models;
+﻿using Core.Models;
 
 namespace Core.Contracts
 {
@@ -9,7 +8,7 @@ namespace Core.Contracts
 
         Task<UserForList> GetById(int id);
 
-        Task<UserForList> CreateUser(string userName);
+        Task<UserForList> CreateUser(string userName, string password);
 
         Task<UserForList> ModifyUser(int userId, string userName);
 

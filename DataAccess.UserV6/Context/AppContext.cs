@@ -6,9 +6,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DataAccess.Context
 {
-    public class CarpoolContext : IdentityDbContext< ApplicationUser,  IdentityRole<int>, int>
+    public class AppContext : IdentityDbContext< ApplicationUser,  IdentityRole<int>, int>
     {
-        public CarpoolContext(DbContextOptions<CarpoolContext> options) : base(options)
+        public AppContext(DbContextOptions<AppContext> options) : base(options)
         {
         }
 

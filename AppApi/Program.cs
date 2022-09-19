@@ -16,14 +16,14 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddDbContext<CarpoolContext>(options => 
+builder.Services.AddDbContext<DataAccess.Context.AppContext>(options => 
     options.UseSqlServer(builder.Configuration.GetConnectionString("Carpool")));
 
 builder.Services.AddTransient<IUserService, UserService>();
 builder.Services.AddTransient<IRepository<ApplicationUser>, UserRepository>();
 
 builder.Services.AddIdentity<ApplicationUser,IdentityRole<int>>()
- .AddEntityFrameworkStores<CarpoolContext>()
+ .AddEntityFrameworkStores<DataAccess.Context.AppContext>()
  .AddDefaultTokenProviders();
 
 var app = builder.Build();

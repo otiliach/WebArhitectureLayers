@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
 using DataAccess.Database.Models;
 
-namespace CarpoolApi.Controllers
+namespace AppApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

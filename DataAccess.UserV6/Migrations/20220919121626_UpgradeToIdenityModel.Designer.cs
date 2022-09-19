@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DataAccess.Migrations
 {
-    [DbContext(typeof(CarpoolContext))]
+    [DbContext(typeof(Context.AppContext))]
     [Migration("20220919121626_UpgradeToIdenityModel")]
     partial class UpgradeToIdenityModel
     {

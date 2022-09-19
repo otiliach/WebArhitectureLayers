@@ -1,4 +1,4 @@
-namespace CarpoolApi
+namespace AppApi
 {
     public class WeatherForecast
     {

@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace CarpoolApi.Controllers
+namespace AppApi.Controllers
 {
     [ApiController]
     [Route("[controller]")]

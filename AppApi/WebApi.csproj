@@ -11,11 +11,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.9">
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.8">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.9">
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.8">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
@@ -23,9 +23,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Business.Post\Business.Product.csproj" />
     <ProjectReference Include="..\Business.UserV6\Business.User.csproj" />
     <ProjectReference Include="..\CoreV6\Core.csproj" />
     <ProjectReference Include="..\DataAcces.User\DataAccess.User.csproj" />
+    <ProjectReference Include="..\DataAccess.Product\DataAccess.Products.csproj" />
     <ProjectReference Include="..\DataAccess.UserV6\DataAccess.Database.csproj" />
   </ItemGroup>
 

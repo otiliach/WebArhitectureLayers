@@ -6,6 +6,8 @@ using DataAccess.Context;
 using Microsoft.EntityFrameworkCore;
 using DataAccess.Database.Models;
 using Microsoft.AspNetCore.Identity;
+using Business.Product;
+using DataAccess.Products.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,9 +22,19 @@ builder.Services.AddDbContext<DataAccess.Context.AppContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("Carpool")));
 
 builder.Services.AddTransient<IUserService, UserService>();
-builder.Services.AddTransient<IRepository<ApplicationUser>, UserRepository>();
+builder.Services.AddTransient<IUserRepository, UserRepository>();
+builder.Services.AddTransient<IProductService, ProductService>();
+builder.Services.AddTransient<IProductRepository, ProductRepository>();
 
-builder.Services.AddIdentity<ApplicationUser,IdentityRole<int>>()
+builder.Services.AddIdentity<ApplicationUser,IdentityRole<int>>(options =>
+{
+    options.Password.RequireDigit = false;
+    options.Password.RequireLowercase = false;
+    options.Password.RequireNonAlphanumeric = false;
+    options.Password.RequireUppercase= false;
+    options.Password.RequiredLength = 7;
+    options.Password.RequiredUniqueChars = 1;
+})
  .AddEntityFrameworkStores<DataAccess.Context.AppContext>()
  .AddDefaultTokenProviders();
 

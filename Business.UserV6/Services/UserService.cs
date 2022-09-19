@@ -8,11 +8,11 @@ namespace Business.Services
 {
     public class UserService : IUserService
     {
-        private readonly IRepository<ApplicationUser> _userRipository;
+        private readonly IUserRepository _userRipository;
         private readonly UserManager<ApplicationUser> _userManager;
 
 
-        public UserService(IRepository<ApplicationUser> userRipository, UserManager<ApplicationUser> userManager )
+        public UserService(IUserRepository userRipository, UserManager<ApplicationUser> userManager )
         {
             _userRipository = userRipository;
             _userManager = userManager;
@@ -37,6 +37,8 @@ namespace Business.Services
 
         public async Task DeleteUser(int userId)
         {
+            var user = await _userRipository.FindById(userId);
+            await _userManager.DeleteAsync(user);
             await _userRipository.Delete(userId);
         }
 

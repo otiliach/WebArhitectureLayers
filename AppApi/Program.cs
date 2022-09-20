@@ -8,6 +8,8 @@ using DataAccess.Database.Models;
 using Microsoft.AspNetCore.Identity;
 using Business.Product;
 using DataAccess.Products.Repository;
+using WebApi.Authentication;
+using Microsoft.AspNetCore.Authentication;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -26,7 +28,7 @@ builder.Services.AddTransient<IUserRepository, UserRepository>();
 builder.Services.AddTransient<IProductService, ProductService>();
 builder.Services.AddTransient<IProductRepository, ProductRepository>();
 
-builder.Services.AddIdentity<ApplicationUser,IdentityRole<int>>(options =>
+builder.Services.AddIdentityCore<ApplicationUser>(options =>
 {
     options.Password.RequireDigit = false;
     options.Password.RequireLowercase = false;
@@ -37,6 +39,10 @@ builder.Services.AddIdentity<ApplicationUser,IdentityRole<int>>(options =>
 })
  .AddEntityFrameworkStores<DataAccess.Context.AppContext>()
  .AddDefaultTokenProviders();
+
+builder.Services.AddAuthentication("BasicAuthentication")
+    .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthentication",null);
+builder.Services.AddAuthorization();
 
 var app = builder.Build();
 
@@ -50,6 +56,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
